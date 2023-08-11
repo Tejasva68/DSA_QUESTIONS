@@ -1,0 +1,25 @@
+class Solution{
+    public:
+    int m=1e9+7;
+    long long int f(int i,int j,string &s,vector<vector<long long int>> &dp)
+    {
+        if(i==j)
+        return 1;
+        if(i>j)
+        return 0;
+        if(dp[i][j]!=-1)
+        return dp[i][j];
+        if(s[i]==s[j])
+            return dp[i][j]=(1+(f(i+1,j,s,dp)%m+f(i,j-1,s,dp)%m)%m);
+        else
+        {
+            return dp[i][j]=(f(i+1,j,s,dp)%m+(f(i,j-1,s,dp)%m-f(i+1,j-1,s,dp)%m+m)%m)%m;
+        }
+    }
+    long long int  countPS(string s)
+    {
+        int n=s.size();
+        vector<vector<long long int>> dp(n,vector<long long int> (n,-1));
+       return f(0,n-1,s,dp);
+    }
+};
