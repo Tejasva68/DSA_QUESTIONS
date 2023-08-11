@@ -1,0 +1,38 @@
+
+
+#include <iostream>
+
+using namespace std;
+
+
+string solve(string s){
+    string str[]={"2",   "22",  "222", "3",   "33",   "333","4",
+            "44",  "444", "5",   "55",  "555",  "6",   "66",
+            "666", "7",   "77",  "777", "7777", "8",   "88",
+            "888", "9",   "99",  "999", "9999"};
+    string ans=" ";
+    
+    for(int i=0;i<s.size();i++){
+        if(s[i]==' '){
+            ans+='0';
+        }
+        else{
+            int j=s[i]-'A';
+            ans+=str[j];
+        }
+    }
+    return ans;
+    
+}
+
+
+int main()
+{
+    // 
+    string S="GEEKSFORGEEKS";
+    string ans=solve(S);
+    cout<<ans;
+    
+
+    return 0;
+}
