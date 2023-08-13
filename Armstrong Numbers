@@ -1,0 +1,23 @@
+// User function Template for C++
+class Solution {
+  public:
+    string armstrongNumber(int n){
+        // code here
+        int f=n;
+        int ans=0;
+        while(f){
+            int d=f%10;
+            int sqr=d*d*d;
+            ans+=sqr;
+            f=f/10;
+            
+        }
+        if(ans==n){
+            return "Yes";
+        }
+        else{
+            return "No";
+        }
+        
+    }
+};
