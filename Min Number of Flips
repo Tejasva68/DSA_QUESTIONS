@@ -1,0 +1,15 @@
+int minFlips (string S)
+{
+    // your code here
+    int flips=0;
+    for(int i=0;i<S.size();i++){
+        if(i%2==0){
+            if(S[i]=='0') flips++;
+        }
+        if(i%2!=0){
+            if(S[i]=='1') flips++;
+        }
+    }
+    int flipother=S.size()-flips;
+    return min(flips,flipother);
+}
