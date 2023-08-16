@@ -1,0 +1,32 @@
+// User function template for C++
+class Solution{
+    public:
+    int dp[1001][1001];
+    bool solve(string wild, string pattern, int i, int j){
+        if(i==-1 && j==-1)return true;
+        if(j==-1){
+            for(int k=0;k<i;k++){
+                if(pattern[k]!='*')return false;
+                else
+                return true;
+            }
+        }
+        if(i==-1)return false;
+        if(dp[i][j]!=-1)return dp[i][j];
+        if(wild[i]==pattern[j] || wild[i]=='?'){
+            return dp[i][j]=solve(wild,pattern,i-1,j-1);
+        }
+        if(wild[i]=='*'){
+            return dp[i][j]=solve(wild,pattern,i-1,j)||solve(wild,pattern,i,j-1);
+        }
+        return false;
+    }
+    bool match(string wild, string pattern)
+    {
+        // code here
+        memset(dp,-1,sizeof(dp));
+        int n=wild.length();
+        int m=pattern.length();
+        return solve(wild,pattern,n-1,m-1);
+    }
+};
